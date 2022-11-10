@@ -53,7 +53,7 @@ function TodoListCard() {
         <React.Fragment>
             <AddItemForm onNewItem={onNewItem} />
             {items.length === 0 && (
-                <p className="text-center">You have no todo items yet! Add one above!</p>
+                <p className="text-center">No items yet! Add one above!</p>
             )}
             {items.map(item => (
                 <ItemDisplay
@@ -66,6 +66,17 @@ function TodoListCard() {
         </React.Fragment>
     );
 }
+
+const Popup = ({ text, closePopup }) => {
+  return (
+    <div className="popup-container">
+     <div className="popup-body">
+      <h1>{text}</h1>
+      <button onClick={closePopup}>Close X</button>
+     </div>
+    </div>
+  );
+};
 
 function AddItemForm({ onNewItem }) {
     const { Form, InputGroup, Button } = ReactBootstrap;
@@ -106,7 +117,7 @@ function AddItemForm({ onNewItem }) {
                         disabled={!newItem.length}
                         className={submitting ? 'disabled' : ''}
                     >
-                        {submitting ? 'Adding...' : 'Add new items here by clicking'}
+                        {submitting ? 'Adding...' : 'Add Item'}
                     </Button>
                 </InputGroup.Append>
             </InputGroup>
